@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>PrimeNumFinder.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+PrimeNumFinder.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">import </span><span class="s1">java.util.ArrayList; 
+ 
+</span><span class="s0">public class </span><span class="s1">PrimeNumFinder { 
+ 
+    </span><span class="s0">int </span><span class="s1">range; 
+ 
+    </span><span class="s0">public </span><span class="s1">PrimeNumFinder(</span><span class="s0">int </span><span class="s1">numrange) { 
+        range = numrange; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">compute() { 
+        ArrayList&lt;Integer&gt; deletion = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Integer&gt;(); 
+        ArrayList&lt;Integer&gt; whole_list = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Integer&gt;(); 
+        ArrayList&lt;Integer&gt; output = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Integer&gt;(); 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">n = </span><span class="s2">2</span><span class="s1">; n &lt;= range; n++) { 
+            whole_list.add(n); 
+        } 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">number = </span><span class="s2">0</span><span class="s1">; number &lt; whole_list.size(); number++) { 
+            </span><span class="s0">if </span><span class="s1">(!deletion.contains(number)) { 
+                </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">time = number + whole_list.get(number); time &lt; whole_list.size(); time += whole_list.get(number)) { 
+                    </span><span class="s0">if </span><span class="s1">(!deletion.contains(time)) { 
+                        deletion.add(time); 
+                    } 
+                } 
+            } 
+        } 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">pos : deletion) { 
+            whole_list.set(pos, </span><span class="s2">0</span><span class="s1">); 
+        } 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">num : whole_list) { 
+            </span><span class="s0">if </span><span class="s1">(num != </span><span class="s2">0</span><span class="s1">) { 
+                output.add(num); 
+            } 
+        } 
+ 
+        System.out.println(output); 
+    } 
+ 
+    </span><span class="s0">public static void </span><span class="s1">main(String[] args) { 
+        PrimeNumFinder primenum = </span><span class="s0">new </span><span class="s1">PrimeNumFinder(</span><span class="s2">3000</span><span class="s1">); 
+        primenum.compute(); 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>
